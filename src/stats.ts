@@ -5,3 +5,12 @@ export function sum(numbers: number[]): number{
 export function average(numbers: number[]): number{
     return sum(numbers) / numbers.length;
 }
+
+export function asyncSum(numbers: number[]): Promise<number> {
+    return Promise.resolve(sum(numbers));
+}
+
+
+export function asyncAverage(numbers: number[]): Promise<number> {
+    return Promise.resolve(average(numbers));
+}
