@@ -16,3 +16,10 @@ export async function test(description: string, callback: () => void) {
         console.log(`❌  ${description}`);
     }
 }
+
+export const it = test;
+
+export function describe(description: string, callback: () => void) {
+    console.log(description);
+    callback();
+}

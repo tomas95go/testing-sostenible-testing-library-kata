@@ -1,30 +1,34 @@
 import {asyncAverage, asyncSum, average, sum} from "./stats";
-import {expect, test} from "./testLib";
+import {describe, expect, it, test} from "./testLib";
 
-test('calculates the sum of all elements of the array',() => {
-    const result = sum([1, 2, 3]);
-    const expected = 6;
+describe('the non async stats functions', () => {
+    it('calculates the sum of all elements of the array', () => {
+        const result = sum([1, 2, 3]);
+        const expected = 6;
 
-    expect(result).toBe(expected);
+        expect(result).toBe(expected);
+    });
+
+    it('calculates the average of all elements of the array', () => {
+        const result = average([1, 2, 3]);
+        const expected = 2;
+
+        expect(result).toBe(expected);
+    });
 });
 
-test('calculates the average of all elements of the array',() => {
-    const result = average([1,2,3]);
-    const expected = 2;
+describe('the async stats functions', () => {
+    it('calculates the sum of all elements of the array async', async () => {
+        const result = await asyncSum([1, 2, 3]);
+        const expected = 6;
 
-    expect(result).toBe(expected);
-});
+        expect(result).toBe(expected);
+    });
 
-test('calculates the sum of all elements of the array async', async () => {
-    const result = await asyncSum([1, 2, 3]);
-    const expected = 6;
+    it('calculates the average of all elements of the array async', async () => {
+        const result = await asyncAverage([1,2,3]);
+        const expected = 2;
 
-    expect(result).toBe(expected);
-});
-
-test('calculates the average of all elements of the array async', async () => {
-    const result = await asyncAverage([1,2,3]);
-    const expected = 2;
-
-    expect(result).toBe(expected);
-});
+        expect(result).toBe(expected);
+    });
+})
